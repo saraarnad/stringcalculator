@@ -7,8 +7,11 @@ public class Calculator {
 			return 0;
 		}
 		else if(text.contains(",") || text.contains("\n")){
+			if(checkIfDelim(text)){
+				return sum(splitDelim(text));
+			}
 			return sum(splitNumbers(text));
-		} 
+		}
 		else
 			return toInt(text);
 	}
@@ -28,4 +31,20 @@ public class Calculator {
 		}
 		return total;
     	}
+
+	private static boolean checkIfDelim(String text){
+		if(text.length() >= 2){
+			if(text.substring(0,2).equals("//")){
+			return true;
+			}
+		}
+		return false;
+	}
+
+	private static String[] splitDelim(String text){
+            	String delim = text.substring(2, text.indexOf("\n"));
+            	text = text.substring(text.indexOf("\n") + 1);
+		
+		return text.split(delim);
+	} 
 }
