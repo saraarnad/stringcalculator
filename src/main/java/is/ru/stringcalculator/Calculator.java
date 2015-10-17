@@ -17,6 +17,9 @@ public class Calculator {
 	}
 
 	private static int toInt(String number){
+		if(number.equals("")){
+			return 0;
+		}
 		return Integer.parseInt(number);
 	}
 
@@ -53,9 +56,22 @@ public class Calculator {
 	}
 
 	private static String[] splitDelim(String text){
-            	String delim = text.substring(2, text.indexOf("\n"));
-            	text = text.substring(text.indexOf("\n") + 1);
-		
-		return text.split(delim);
+            	String delim = text;
+		if(delim.substring(0, 3).equals("//[")){
+			delim = delim.substring(3, delim.indexOf("]"));
+		} else{
+			delim = delim.substring(2, delim.indexOf("\n"));
+            	}
+		text = text.substring(text.indexOf("\n") + 1);
+		text = text.replace(delim, ",");
+		return text.split(",");
 	} 
+
 }
+
+
+
+
+
+
+
