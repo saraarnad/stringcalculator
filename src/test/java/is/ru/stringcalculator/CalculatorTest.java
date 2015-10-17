@@ -47,5 +47,15 @@ public class CalculatorTest {
 	@Test
 	public void testDelimeterOneNumber(){
 		assertEquals(1, Calculator.add("//;\n1"));
-	}	
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testNegativeNumber(){
+            	Calculator.add("-1,2");
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testManyNegativeNumbers(){
+		Calculator.add("2,-4,3,-5");
+	}
 }

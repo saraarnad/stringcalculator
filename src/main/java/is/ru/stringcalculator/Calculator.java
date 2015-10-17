@@ -26,9 +26,17 @@ public class Calculator {
      	 
     	private static int sum(String[] numbers){
  	    	int total = 0;
+		String negNum = "";
         	for(String number : numbers){
-		    total += toInt(number);
+		    	total += toInt(number);
+			if(toInt(number) < 0) {
+				negNum = negNum + number;
+			}
+			if(negNum.length() > 0){
+				throw new IllegalArgumentException("Negatives not allowed: " + negNum){};
+			} 
 		}
+		
 		return total;
     	}
 
