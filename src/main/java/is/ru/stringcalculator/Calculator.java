@@ -28,8 +28,11 @@ public class Calculator {
  	    	int total = 0;
 		String negNum = "";
         	for(String number : numbers){
-		    	total += toInt(number);
-			if(toInt(number) < 0) {
+			int numb = toInt(number);
+			if(numb < 1001){
+		    		total += numb;
+			}
+			if(numb < 0) {
 				negNum = negNum + number;
 			}
 			if(negNum.length() > 0){
