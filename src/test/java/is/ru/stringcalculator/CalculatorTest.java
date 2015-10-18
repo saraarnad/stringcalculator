@@ -73,4 +73,24 @@ public class CalculatorTest {
 	public void testAnyLenghtDelimiterNumber(){
 		assertEquals(6, Calculator.add("//[88]\n1882883"));
 	}
+
+	@Test
+	public void testMultipleDelimiters(){
+		assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
+	}
+	
+	@Test
+	public void testMultipleDelimitersTree(){
+		assertEquals(7, Calculator.add("//[*][%][$]\n1*1$2%3"));
+	}
+
+	@Test
+	public void testAnyLenghtMultipleDelimiters(){
+		assertEquals(6, Calculator.add("//[**][%]\n1**2%3"));
+	}
+	
+	@Test
+	public void testAnyLengtMultipleDelimitersThree(){
+		assertEquals(7, Calculator.add("//[###][**][$$]\n1###1**2$$3"));
+	}
 }
